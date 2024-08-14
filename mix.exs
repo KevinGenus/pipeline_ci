@@ -10,6 +10,7 @@ defmodule PipelineCi.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         coveralls: :test,
         "coveralls.detail": :test,
@@ -68,7 +69,7 @@ defmodule PipelineCi.MixProject do
       {:bandit, "~> 1.5"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.18", only: :test},
-      {:sobelow, "~> 0.13", only: [:dev], runtime: false},
+      {:sobelow, "~> 0.13", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
