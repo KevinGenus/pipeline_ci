@@ -15,7 +15,7 @@ jobs:
         with:
           elixir-version: ${{ matrix.elixir }}
           otp-version: ${{ matrix.otp }}
-      - uses: actions/checkout@v1
+      - uses: actions/cache@v1
         id: mix-lint-cache
         with:
           path: deps
@@ -23,5 +23,5 @@ jobs:
       - name: Install Mix Dependencies
         if: steps.mix-lint-cache.outputs.cache-hit != 'true'
         run: mix deps.get
-      - name: Check Lint
+      - name: LINT
         run: mix credo --strict
